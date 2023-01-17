@@ -1,7 +1,7 @@
 <template>
   <header>
     <h1>
-      <img src="../assets/logo.png" alt="LogoMarca">
+      <img src="../assets/logo_jbal.png" :width="180" alt="LogoMarca">
     </h1>
     <button class="button" @click="alterarTema">
       {{ textoBotao }}
