@@ -18,7 +18,7 @@ import Cronometro from "./Cronometro.vue";
 import Box from "./Box.vue";
 
 export default defineComponent({
-    name: 'TarefaViue',
+    name: 'TarefaVue',
     components: {
         Cronometro,
         Box
