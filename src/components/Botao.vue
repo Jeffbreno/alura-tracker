@@ -1,6 +1,6 @@
 <template>
-  <button class="button" @click="clicado" :disabled="desabilitado">
-    <span class="icon">
+  <button :class="btn" @click="clicado" :disabled="desabilitado">
+    <span class="fa-xs">
       <i :class="icone"></i>
     </span>
     <span>{{ texto }}</span>
@@ -16,6 +16,10 @@ export default defineComponent({
   props: {
     desabilitado: {
       type: Boolean
+    },
+    btn:{
+      type: String,
+      required: true
     },
     icone: {
       type: String,

@@ -1,9 +1,17 @@
 <template>
-    <section class="is-flex is-align-items-center is-justify-content-space-between">
-        <Cronometro :tempoEmSegundos="tempoEmSegundos" />
-        <Botao @clicado="iniciar" icone="fas fa-play" texto="play" :desabilitado="cronometroRodando" />
-        <Botao @clicado="finalizar" icone="fas fa-stop" texto="stop" :desabilitado="!cronometroRodando" />
-    </section>
+    <div class="row">
+        <!-- <div class="col-2"></div> -->
+        <div class="col-2" style="border: 1px solid #000">
+            <Cronometro :tempoEmSegundos="tempoEmSegundos" />
+        </div>
+        <div class="col-5" style="border: 1px solid #000">
+            <Botao @clicado="iniciar" btn="btn btn-success" icone="me-2 fa-solid fa-play" texto="Play"
+                :desabilitado="cronometroRodando" />
+            <Botao @clicado="finalizar" btn="btn btn-danger" icone="me-2 fa-solid fa-stop" texto="Stop"
+                :desabilitado="!cronometroRodando" />
+        </div>
+
+    </div>
 </template>
 
 <script lang="ts">

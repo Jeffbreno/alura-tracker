@@ -1,6 +1,8 @@
 <template>
-    <div class="alert alert-warning alert-dismissible fade show" role="alert">
-        <slot></slot>
+    <div class="row">
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <slot></slot>
+        </div>
     </div>
 </template>
 
