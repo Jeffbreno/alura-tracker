@@ -3,7 +3,11 @@
     <div class="lista">
         <Tarefa v-for="(tarefa, index) in tarefas" :key="index" :tarefa="tarefa" />
         <Box v-if="listaEstaVazia">
-            Você não está muito produtivo hoje <span class="has-text-weight-bold"> :( </span>
+            <strong>Você não está muito produtivo hoje! </strong> 
+            <span style="font-size: 24px;" class="bi pe-none me-2">
+                <i class="fa-solid fa-face-frown"></i>
+            </span>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </Box>
     </div>
 

@@ -1,5 +1,5 @@
 <template>
-    <div class="box has-text-weight-bold" :style="estilos">
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
         <slot></slot>
     </div>
 </template>
@@ -8,12 +8,12 @@
 import { defineComponent } from 'vue';
 export default defineComponent({
     name: 'BoxVue',
-    data(){
-        return {
-            estilos: {
-                backgroundColor: '#FAF0CA'
-            }
-        }
-    }
+    // data(){
+    //     return {
+    //         estilos: {
+    //             backgroundColor: '#FAF0CA'
+    //         }
+    //     }
+    // }
 });
 </script>
