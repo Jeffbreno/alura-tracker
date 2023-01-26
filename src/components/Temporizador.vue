@@ -1,17 +1,13 @@
 <template>
-    <div class="row">
-        <!-- <div class="col-2"></div> -->
-        <div class="col-2" style="border: 1px solid #000">
-            <Cronometro :tempoEmSegundos="tempoEmSegundos" />
-        </div>
-        <div class="col-5" style="border: 1px solid #000">
-            <Botao @clicado="iniciar" btn="btn btn-success" icone="me-2 fa-solid fa-play" texto="Play"
-                :desabilitado="cronometroRodando" />
-            <Botao @clicado="finalizar" btn="btn btn-danger" icone="me-2 fa-solid fa-stop" texto="Stop"
-                :desabilitado="!cronometroRodando" />
-        </div>
+    <!-- <div class="mb-3 row text-end"> -->
+        <!-- <div class="col-6 flex-grow-1"></div> -->
+        <Cronometro :tempoEmSegundos="tempoEmSegundos" />
+        <Botao @clicado="iniciar" btn="btn btn-success me-1" icone="me-2 fa-solid fa-play" texto="Play"
+            :desabilitado="cronometroRodando" />
+        <Botao @clicado="finalizar" btn="btn btn-danger" icone="me-2 fa-solid fa-stop" texto="Stop"
+            :desabilitado="!cronometroRodando" />
 
-    </div>
+    <!-- </div> -->
 </template>
 
 <script lang="ts">

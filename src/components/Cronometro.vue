@@ -1,7 +1,5 @@
 <template>
-    <section>
-        <strong>{{ tempoDecorrido }}</strong>
-    </section>
+    <strong class="me-2">{{ tempoDecorrido }}</strong>
 </template>
 
 <script lang="ts">

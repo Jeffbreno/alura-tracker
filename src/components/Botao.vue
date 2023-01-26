@@ -1,8 +1,6 @@
 <template>
-  <button :class="btn" @click="clicado" :disabled="desabilitado">
-    <span class="fa-xs">
+  <button class="" :class="btn" @click="clicado" :disabled="desabilitado">
       <i :class="icone"></i>
-    </span>
     <span>{{ texto }}</span>
   </button>
 </template>

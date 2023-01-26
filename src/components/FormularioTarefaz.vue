@@ -1,13 +1,13 @@
 <template>
     <div class="formulario">
-        <div class="row">
-            <div class="mb-3">
+        <div class="row mb-3">
+            <div class="col-md-9 inputTarefa mb-sm-3">
                 <input type="text" class="form-control" placeholder="Qual tarefa você deseja iniciar?"
                     v-model="descricao" />
             </div>
-        </div>
-        <div class="row">
-            <Temporizador @aoTemporizadorFinalizado="finalizarTarefa" />
+            <div class="col-md-3">
+                <Temporizador @aoTemporizadorFinalizado="finalizarTarefa" />
+            </div>
         </div>
     </div>
 </template>
@@ -39,9 +39,14 @@ export default defineComponent({
 });
 </script>
 
-<!-- <style>
+<style scoped>
 .formulario {
     color: var(--texto-primario);
     background-color: var(--bg-primaria);
 }
-</style> -->
+
+/* 
+.inputTarefa{
+    width: 54em;
+} */
+</style>
