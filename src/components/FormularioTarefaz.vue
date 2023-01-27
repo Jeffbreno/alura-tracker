@@ -1,11 +1,11 @@
 <template>
     <div class="formulario">
         <div class="row mb-3">
-            <div class="col-md-9 inputTarefa mb-sm-3">
+            <div class="col-sm-9 mb-3">
                 <input type="text" class="form-control" placeholder="Qual tarefa você deseja iniciar?"
                     v-model="descricao" />
             </div>
-            <div class="col-md-3">
+            <div class="col-auto">
                 <Temporizador @aoTemporizadorFinalizado="finalizarTarefa" />
             </div>
         </div>

@@ -1,5 +1,5 @@
 <template>
-  <button class="" :class="btn" @click="clicado" :disabled="desabilitado">
+  <button :class="btn" @click="clicado" :disabled="desabilitado">
       <i :class="icone"></i>
     <span>{{ texto }}</span>
   </button>
