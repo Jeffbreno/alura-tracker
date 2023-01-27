@@ -39,14 +39,9 @@ export default defineComponent({
 });
 </script>
 
-<style scoped>
+<style>
 .formulario {
     color: var(--texto-primario);
     background-color: var(--bg-primaria);
 }
-
-/* 
-.inputTarefa{
-    width: 54em;
-} */
 </style>

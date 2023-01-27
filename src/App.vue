@@ -1,5 +1,5 @@
 <template>
-  <main class="container-fluid" :class="{ 'modo-escuro': modoEscuroAtivo }">
+  <main class="conteudo container-fluid" :class="{ 'modo-escuro': modoEscuroAtivo }">
     <div class="row flex-nowrap">
       <BarraLateral @aoTemaAlterado="trocarTema" />
       <div class="col py-3" style="border: 1px solid #000;">
@@ -23,7 +23,8 @@ export default defineComponent({
   },
   data() {
     return {
-      modoEscuroAtivo: false
+      modoEscuroAtivo: false,
+      activeClass: null
     }
   },
   methods: {
@@ -33,3 +34,20 @@ export default defineComponent({
   }
 });
 </script>
+
+<style>
+main {
+  --bg-primario: #fff;
+  --texto-primario: #000;
+}
+
+main.modo-escuro {
+  --bg-primario: #36363a;
+  --texto-primario: #ddd;
+  color: var(--texto-primario);
+}
+
+.conteudo {
+  background-color: var(--bg-primario);
+}
+</style>

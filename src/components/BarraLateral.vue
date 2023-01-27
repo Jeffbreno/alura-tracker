@@ -7,6 +7,14 @@
         </span>
       </a>
       <hr>
+      <div class="text-center">
+        <button class="btn btn-secondary" @click="alterarTema"
+        data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Tooltip on right">
+          <li v-bind:class="[activeClass]"></li>
+          <!-- {{ textoBotao }} -->
+        </button>
+        <hr>
+      </div>
       <ul class="hover nav nav-pills flex-column mb-sm-auto mb-0" id="menu">
         <li class="nav-item">
           <router-link to="/" class="nav-link text-white">
@@ -34,13 +42,14 @@ export default defineComponent({
   emits: ['aoTemaAlterado'],
   data() {
     return {
-      modoEscuroAtivo: false
+      modoEscuroAtivo: false,
+      activeClass: 'fa-solid fa-moon',
     }
   },
   computed: {
     textoBotao() {
       if (this.modoEscuroAtivo) {
-        return 'Desativa modo escuro'
+        return 'Desativar modo escuro'
       }
       return 'Ativar modo escuro'
     }
@@ -49,6 +58,11 @@ export default defineComponent({
     alterarTema() {
       this.modoEscuroAtivo = !this.modoEscuroAtivo
       this.$emit('aoTemaAlterado', this.modoEscuroAtivo)
+      if (this.modoEscuroAtivo) {
+        this.activeClass = 'fa-solid fa-sun'
+      } else {
+        this.activeClass = 'fa-solid fa-moon'
+      }
     }
   }
 })
