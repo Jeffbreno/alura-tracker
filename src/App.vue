@@ -50,4 +50,5 @@ main.modo-escuro {
 .conteudo {
   background-color: var(--bg-primario);
 }
+
 </style>

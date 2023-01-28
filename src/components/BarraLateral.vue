@@ -8,10 +8,13 @@
       </a>
       <hr>
       <div class="text-center">
-        <button class="btn btn-secondary" @click="alterarTema"
-        data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Tooltip on right">
-          <li v-bind:class="[activeClass]"></li>
-          <!-- {{ textoBotao }} -->
+        <button type="button" class="btn btn-secondary" 
+          @click="alterarTema" 
+          data-bs-toggle="tooltip" 
+          data-bs-placement="right"
+          data-bs-custom-class="custom-tooltip"
+          data-bs-title="Alterar Modo">
+          <i v-bind:class="[activeClass]"></i>
         </button>
         <hr>
       </div>
@@ -36,14 +39,21 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import { Tooltip } from 'bootstrap';
 
 export default defineComponent({
+  mounted() {
+    new Tooltip(document.body, {
+      selector: "[data-bs-toggle='tooltip']",
+    })
+  },
   name: 'BarraLateral',
   emits: ['aoTemaAlterado'],
   data() {
     return {
       modoEscuroAtivo: false,
       activeClass: 'fa-solid fa-moon',
+      toolltipTitle: 'Ativar modo escuro'
     }
   },
   computed: {
