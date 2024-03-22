@@ -5,6 +5,9 @@
                 <input type="text" class="form-control" placeholder="Qual tarefa você deseja iniciar?"
                     v-model="descricao" />
             </div>
+            <div class="col-sm-3 mb-3">
+                
+            </div>
             <div class="col-auto">
                 <Temporizador @aoTemporizadorFinalizado="finalizarTarefa" />
             </div>
@@ -13,7 +16,9 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { computed, defineComponent } from 'vue';
+import { useStore } from 'vuex';
+import { key } from '@/store';
 import Temporizador from './Temporizador.vue';
 
 export default defineComponent({
@@ -24,7 +29,8 @@ export default defineComponent({
     },
     data() {
         return {
-            descricao: ''
+            descricao: '',
+            idProjeto: ''
         }
     },
     methods: {
@@ -35,6 +41,10 @@ export default defineComponent({
             })
             this.descricao = ''
         }
+    },
+    setup() {
+        const store = useStore(key);
+        return { projetos: computed(() => store.state.projetos) }
     }
 });
 </script>

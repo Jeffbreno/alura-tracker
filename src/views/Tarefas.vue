@@ -17,7 +17,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import Formulario from '@/components/FormularioTarefaz.vue';
+import Formulario from '@/components/Formulario.vue';
 import Tarefa from '@/components/Tarefa.vue';
 import ITarefa from '@/interfaces/ITarefa';
 import Box from '@/components/Box.vue';
