@@ -6,7 +6,11 @@
                     v-model="descricao" />
             </div>
             <div class="col-sm-3 mb-3">
-                
+                <select v-model="idProjeto" class="form-select" aria-label="Default select example">
+                    <option value="">Selecione o Projeto</option>
+                    <option :value="projeto.id" v-for="projeto in projetos" :key="projeto.id">{{ projeto.nome }}
+                    </option>
+                </select>
             </div>
             <div class="col-auto">
                 <Temporizador @aoTemporizadorFinalizado="finalizarTarefa" />
@@ -37,7 +41,8 @@ export default defineComponent({
         finalizarTarefa(tempoDecorrido: number): void {
             this.$emit('aoSalvarTarefa', {
                 duracaoEmSegundos: tempoDecorrido,
-                descricao: this.descricao
+                descricao: this.descricao,
+                projeto: this.projetos.find(proj => proj.id == this.idProjeto)
             })
             this.descricao = ''
         }
