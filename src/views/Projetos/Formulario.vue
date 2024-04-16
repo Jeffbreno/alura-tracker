@@ -14,9 +14,11 @@
 </template>
 
 <script lang="ts">
+import { TipoNotificacao } from '@/interfaces/INotificacao';
 import { useStore } from '@/store';
-import { ADICIONA_PROJETO, ALTERA_PROJETO } from '@/store/tipos-mutacoes';
+import { ADICIONA_PROJETO, ALTERA_PROJETO, NOTIFICAR } from '@/store/tipos-mutacoes';
 import { defineComponent } from 'vue';
+import useNotificador from '@/hooks/notificador'
 
 export default defineComponent({
     name: 'FormularioVue',
@@ -25,6 +27,7 @@ export default defineComponent({
             type: String
         }
     },
+
     mounted() {
         if (this.id) {
             const projeto = this.store.state.projetos.find(proj => proj.id == this.id)
@@ -48,12 +51,14 @@ export default defineComponent({
 
             }
             this.nomeDoProjeto = ''
+            this.notificar(TipoNotificacao.SUCESSO, 'Sucesso', 'Seu projeto foi cadasrado')
             this.$router.push('/projetos')
-        }
+        },
     },
     setup() {
         const store = useStore()
-        return { store }
+        const { notificar } = useNotificador();
+        return { store, notificar }
     }
 })
 </script>
