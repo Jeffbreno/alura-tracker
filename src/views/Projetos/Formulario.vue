@@ -16,7 +16,7 @@
 <script lang="ts">
 import { TipoNotificacao } from '@/interfaces/INotificacao';
 import { useStore } from '@/store';
-import { ADICIONA_PROJETO, ALTERA_PROJETO, NOTIFICAR } from '@/store/tipos-mutacoes';
+import { ADICIONA_PROJETO, ALTERA_PROJETO } from '@/store/tipos-mutacoes';
 import { defineComponent } from 'vue';
 import useNotificador from '@/hooks/notificador'
 
