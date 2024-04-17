@@ -16,9 +16,9 @@
 <script lang="ts">
 import { TipoNotificacao } from '@/interfaces/INotificacao';
 import { useStore } from '@/store';
-import { ADICIONA_PROJETO, ALTERA_PROJETO } from '@/store/tipos-mutacoes';
 import { defineComponent } from 'vue';
 import useNotificador from '@/hooks/notificador'
+import { ALTERAR_PROJETO, CADASTRAR_PROJETO } from '@/store/tipo-acoes';
 
 export default defineComponent({
     name: 'FormularioVue',
@@ -42,18 +42,29 @@ export default defineComponent({
     methods: {
         salvar() {
             if (this.id) {
-                this.store.commit(ALTERA_PROJETO, {
+                this.store.dispatch(ALTERAR_PROJETO, {
                     id: this.id,
                     nome: this.nomeDoProjeto
-                })
+                }).then(() => this.success()).catch(() => { this.error() });
             } else {
-                this.store.commit(ADICIONA_PROJETO, this.nomeDoProjeto)
+                this.store.dispatch(CADASTRAR_PROJETO, this.nomeDoProjeto).then(() => {
+                    this.success();
+                }).catch(() => {
+                    this.error();
+                })
 
             }
+        },
+        success() {
             this.nomeDoProjeto = ''
             this.notificar(TipoNotificacao.SUCESSO, 'Sucesso', 'Seu projeto foi cadasrado')
             this.$router.push('/projetos')
         },
+        error() {
+            this.nomeDoProjeto = ''
+            this.notificar(TipoNotificacao.FALHA, 'Atenção', 'Erro inesperado, o comando falhou')
+            this.$router.push('/projetos')
+        }
     },
     setup() {
         const store = useStore()
