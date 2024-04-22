@@ -16,9 +16,10 @@
 <script lang="ts">
 import { TipoNotificacao } from '@/interfaces/INotificacao';
 import { useStore } from '@/store';
-import { defineComponent } from 'vue';
+import { defineComponent, ref } from 'vue';
 import useNotificador from '@/hooks/notificador'
 import { ALTERAR_PROJETO, CADASTRAR_PROJETO } from '@/store/tipo-acoes';
+import { useRouter } from 'vue-router';
 
 export default defineComponent({
     name: 'FormularioVue',
@@ -27,49 +28,45 @@ export default defineComponent({
             type: String
         }
     },
-
-    mounted() {
-        if (this.id) {
-            const projeto = this.store.state.projetos.find(proj => proj.id == this.id)
-            this.nomeDoProjeto = projeto?.nome || ''
-        }
-    },
-    data() {
-        return {
-            nomeDoProjeto: ''
-        }
-    },
-    methods: {
-        salvar() {
-            if (this.id) {
-                this.store.dispatch(ALTERAR_PROJETO, {
-                    id: this.id,
-                    nome: this.nomeDoProjeto
-                }).then(() => this.success()).catch(() => { this.error() });
-            } else {
-                this.store.dispatch(CADASTRAR_PROJETO, this.nomeDoProjeto).then(() => {
-                    this.success();
-                }).catch(() => {
-                    this.error();
-                })
-
-            }
-        },
-        success() {
-            this.nomeDoProjeto = ''
-            this.notificar(TipoNotificacao.SUCESSO, 'Sucesso', 'Seu projeto foi cadasrado')
-            this.$router.push('/projetos')
-        },
-        error() {
-            this.nomeDoProjeto = ''
-            this.notificar(TipoNotificacao.FALHA, 'Atenção', 'Erro inesperado, o comando falhou')
-            this.$router.push('/projetos')
-        }
-    },
-    setup() {
-        const store = useStore()
+    setup(props) {
+        const router = useRouter();
+        const store = useStore();
         const { notificar } = useNotificador();
-        return { store, notificar }
+        const nomeDoProjeto = ref("");
+
+        if (props.id) {
+            const projeto = store.state.projeto.projetos.find((proj) => proj.id == props.id);
+            nomeDoProjeto.value = projeto?.nome || ''
+        }
+        
+        const salvar = () => {
+            if (props.id) {
+                store.dispatch(ALTERAR_PROJETO, {
+                    id: props.id,
+                    nome: nomeDoProjeto.value
+                }).then(() => success()).catch(() => { error() });
+            } else {
+                store.dispatch(CADASTRAR_PROJETO, nomeDoProjeto).then(() => {
+                    success();
+                }).catch(() => {
+                    error();
+                })
+            }
+        }
+
+        const success = () => {
+            nomeDoProjeto.value = ''
+            notificar(TipoNotificacao.SUCESSO, 'Sucesso', 'Seu projeto foi cadasrado')
+            router.push('/projetos')
+        }
+
+        const error = () => {
+            nomeDoProjeto.value = ''
+            notificar(TipoNotificacao.FALHA, 'Atenção', 'Erro inesperado, o comando falhou')
+            router.push('/projetos')
+        }
+
+        return { nomeDoProjeto, salvar }
     }
 })
 </script>

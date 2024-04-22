@@ -7,57 +7,31 @@
     {
       "id": "2",
       "nome": "Projeto 02"
-    },
-    {
-      "id": "f0f5",
-      "nome": "Projeto 03"
     }
   ],
   "tarefas": [
     {
-      "id": "1",
-      "duracaoEmSegundos": 120,
-      "descricao": "Configuração do ambiente de desenvolvimento",
-      "projeto": {
-        "id": 1,
-        "nome": "Projeto 01"
-      }
-    },
-    {
-      "id": "829f",
-      "duracaoEmSegundos": 4,
-      "descricao": "Refatoração",
+      "id": "70b3",
+      "duracaoEmSegundos": 3,
+      "descricao": "Configurando Ambiente",
       "projeto": {
         "id": "1",
         "nome": "Projeto 01"
       }
     },
     {
-      "id": "42a1",
-      "duracaoEmSegundos": 9,
-      "descricao": "TESTE",
+      "id": "f4cc",
+      "duracaoEmSegundos": 2,
+      "descricao": "Teste 01",
       "projeto": {
         "id": "1",
         "nome": "Projeto 01"
       }
     },
     {
-      "id": "d1fa",
-      "duracaoEmSegundos": 5,
-      "descricao": "Novo Teste",
-      "projeto": {
-        "id": "2",
-        "nome": "Projeto 02"
-      }
-    },
-    {
-      "id": "3d04",
-      "duracaoEmSegundos": 1,
-      "descricao": "Teste teste",
-      "projeto": {
-        "id": "2",
-        "nome": "Projeto 02"
-      }
+      "id": "3631",
+      "duracaoEmSegundos": 2,
+      "descricao": "Nova tarefa"
     }
   ]
 }
