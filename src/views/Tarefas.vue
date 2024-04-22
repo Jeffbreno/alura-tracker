@@ -22,31 +22,29 @@
             </div>
             <Tarefa v-for="(tarefa, index) in tarefas" :key="index" :tarefa="tarefa"
                 @aoTarefaClicada="selecionarTarefa" />
+            <ModalVue>
+                <template v-slot:cabecalho>
+                    <h1 class="modal-title fs-5" id="ModalTarefa">Editando uma Tarefa</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </template>
+                <template v-slot:conteudo>
+                    <form class="row mb-3" novalidate>
+                        <div class="col-9 col-sm-11">
+                            <input type="text" class="form-control" 
+                                v-if="tarefaSelecionada"
+                                v-model="tarefaSelecionada.descricao" id="descricaoDaTarefa"
+                                placeholder="Descrição da Tarefa" required />
+                        </div>
+                    </form>
+                </template>
+                <template v-slot:rodape>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button @click="alterarTarefa" type="button" class="btn btn-primary">Salvar
+                        alterações</button>
+                </template>
+            </ModalVue>
         </div>
-        <!-- Modal -->
-        <div class="modal fade" id="ModalTarefa" tabindex="-1" aria-labelledby="ModalTarefa" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="ModalTarefa">Editando uma Tarefa</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <form class="row mb-3" novalidate>
-                            <div class="col-9 col-sm-11">
-                                <input type="text" class="form-control" v-if="tarefaSelecionada"
-                                    v-model="tarefaSelecionada.descricao" id="descricaoDaTarefa"
-                                    placeholder="Descrição da Tarefa" required />
-                            </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                        <button @click="alterarTarefa" type="button" class="btn btn-primary">Salvar alterações</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+
     </section>
 </template>
 
@@ -59,14 +57,15 @@ import { useStore } from '@/store';
 import { ALTERAR_TAREFA, CADASTRAR_TAREFA, OBTER_PROJETOS, OBTER_TAREFAS } from '@/store/tipo-acoes';
 import ITarefa from '@/interfaces/ITarefa';
 import { Modal } from 'bootstrap';
-
+import ModalVue from '@/components/Modal.vue';
 
 export default defineComponent({
     name: 'App',
     components: {
         Formulario,
         Tarefa,
-        Box
+        Box,
+        ModalVue
     },
     data() {
         return { tarefaSelecionada: null as ITarefa | null, modal: null as Modal | null }
