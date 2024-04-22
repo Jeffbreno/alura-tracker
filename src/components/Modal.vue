@@ -17,17 +17,10 @@
 </template>
 
 <script lang="ts">
-import { Modal } from 'bootstrap';
 import { defineComponent } from 'vue';
 
 export default defineComponent({
     name: 'ModalVue',
-    // props: {
-    //     tarefaSelecionada: {
-    //         type: Boolean,
-    //         required: true
-    //     }
-    // }
 })
 
 
